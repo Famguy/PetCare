@@ -1,2 +1,4 @@
 Django==1.9
-Python==2.7
+django-geojson==2.8.1
+django-leaflet==0.17.1
+
