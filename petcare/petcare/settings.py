@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'leaflet',
+    'djgeojson',
+#    'vets'
 ]
+
+
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -120,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT= os.path.join(BASE_DIR,'static_media/')
+# STATIC_ROOT= os.path.join(BASE_DIR,'static_media/')
 
 # Static files
 STATICFILES_DIRS =  (
@@ -128,4 +133,4 @@ STATICFILES_DIRS =  (
     )
 
 # HTML templates
-TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+# TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
