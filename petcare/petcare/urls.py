@@ -21,4 +21,6 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', 'petcare.view.home', name='home')
+
 ]
