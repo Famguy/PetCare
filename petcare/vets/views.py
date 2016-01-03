@@ -16,3 +16,6 @@ def search(request):
 	query_result = google_places.nearby_search(location='London, England', keyword='dogs', radius=20000, types=[types.TYPE_VETERINARY_CARE])
 	output = ', '.join([str(place.name) for place in query_result.places])
 	return HttpResponse(output)
+
+def map(request):
+	return HttpResponse("map plotting tryout")
