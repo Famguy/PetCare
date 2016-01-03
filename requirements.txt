@@ -1,4 +1,4 @@
 Django==1.8
 django-geojson==2.8.1
 django-leaflet==0.17.1
-
+python-google-places==1.1.0
