@@ -1,5 +1,8 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
+from petcare.models import MushroomSpot
 
 def home(request):
-	return render_to_response('index.html', context_instance=RequestContext(request))
+	mushroomspot = MushroomSpot.objects.all()
+	print mushroomspot
+	return render(request, 'index.html', {'mushroomspot': mushroomspot})
