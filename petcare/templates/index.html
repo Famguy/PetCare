@@ -7,9 +7,8 @@
 {% endblock %}
 
 {% block content %}
-
     <script type="text/javascript">
-      var collection = {{ qs_results|geojsonfeature|safe }};
+      var collection = {{ mushroomspot|geojsonfeature|safe }};
       function map_init(map, options) {
           L.geoJson(collection).addTo(map);
       }
