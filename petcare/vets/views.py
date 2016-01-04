@@ -22,7 +22,9 @@ def search(request):
 	if request.method == 'POST':
 		loc = request.POST.get('location', '')
 		#keyw = request.POST.get('what', '')
-	query_result = google_places.nearby_search(location='London, England', keyword='dogs', radius=20000, types=[types.TYPE_VETERINARY_CARE])
+	query_result = google_places.nearby_search(location=loc, keyword='dogs', radius=20000, types=[types.TYPE_VETERINARY_CARE])
+	#a working search-
+	#query_result = google_places.nearby_search(location='London, England', keyword='dogs', radius=20000, types=[types.TYPE_VETERINARY_CARE])
 	output = ', '.join([str(place.name) for place in query_result.places])
 	return HttpResponse(output)
 
