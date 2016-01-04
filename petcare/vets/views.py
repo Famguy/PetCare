@@ -31,4 +31,5 @@ def search(request):
 def map(request):
 	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
 	search_result = gmaps.places('dogs', location='London, England',types='veterinary_care')
+	print search_result
 	return HttpResponse("google map plotting tryout")
