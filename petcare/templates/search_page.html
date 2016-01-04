@@ -1,0 +1,20 @@
+{% block form %}        
+
+<div>                           
+    <form role="form" action="/vets/find/" method="POST">
+		{% csrf_token %}
+            <div>                                     
+                <div style="vertical-align: middle;width: 75%;float: none;display: inline-block;">
+                    <div>
+                        <input type="text" name="location" placeholder="Which place do you want to search?">
+                        <span>
+                            <button type="submit">Search!</button>
+                        </span>
+                    </div>
+                </div>                  
+            </div>                                    
+    </form>                                                             
+</div>
+{% endblock %}    
+
+
