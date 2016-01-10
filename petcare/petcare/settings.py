@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'leaflet',
     'petcare',
     'djgeojson',
-#    'vets'
+    'vets'
 ]
 
 
