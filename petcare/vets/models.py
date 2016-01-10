@@ -1,5 +1,9 @@
-from __future__ import unicode_literals
+# Create your models here.
 
+from djgeojson.fields import PointField
 from django.db import models
 
-# Create your models here.
+class VetSpot(models.Model):
+
+	geom = PointField()
+	description = models.TextField()
