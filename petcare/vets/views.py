@@ -60,6 +60,9 @@ def searchtomap(request):
 		vs.latitude = r['geometry']['location']['lat']
 		vs.longitude = r['geometry']['location']['lng']
 		vs.address = r['formatted_address']
+		if 'opening_hours' in r.keys():
+			if str(r['opening_hours']['open_now']).lower == "true":
+				vs.opennow = True
 #		vs.phone = r['formatted_phone_number']
 #		vs.opennow = False
 #		if str(r['opening_hours']['open_now']).lower == "true":

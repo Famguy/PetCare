@@ -10,7 +10,7 @@ class VetSpot(models.Model):
 	longitude = models.FloatField()
 	address = models.TextField()
 #	phone = models.TextField()
-#	opennow = models.BooleanField()
+	opennow = models.BooleanField(default=False)
 
 
 	class Meta:
