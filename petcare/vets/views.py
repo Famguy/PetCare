@@ -36,10 +36,19 @@ def map(request):
 	print search_result
 	return HttpResponse(search_result)
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
 def searchtomap(request):
 	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
 	search_result = gmaps.places('dogs', location=(19.3937262,72.7894004),types='veterinary_care', radius = 100)
 	vslist = []
+	print get_client_ip(request)
 	for r in search_result['results']:
 #		print r['name']
 #		print r['geometry']['location']
@@ -56,6 +65,6 @@ def searchtomap(request):
 #		if str(r['opening_hours']['open_now']).lower == "true":
 #			vs.opennow = True
 		vslist.append(vs)
-	print search_result['results']
+#	print search_result['results']
 
 	return render(request, 'poi_list.html', {'pois': vslist})
