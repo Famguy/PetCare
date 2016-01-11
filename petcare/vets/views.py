@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from googleplaces import GooglePlaces, types, lang
 import googlemaps
 from vets.models import VetSpot
-import json
 
 # Create your views here.
 YOUR_API_KEY = 'AIzaSyAv52Som47-ps4IOblaZsMWOWB0h8p2mfg'
@@ -39,21 +38,24 @@ def map(request):
 
 def searchtomap(request):
 	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
-	search_result = gmaps.places('dogs', location=(-33.86746, 151.207090),types='veterinary_care', radius = 100)
+	search_result = gmaps.places('dogs', location=(19.3937262,72.7894004),types='veterinary_care', radius = 100)
 	vslist = []
 	for r in search_result['results']:
 #		print r['name']
 #		print r['geometry']['location']
 #		print r['opening_hours']['open_now']
 #		print r['formatted_address']
-#		print r['rating']
+#		print r['formatted_phone_number']
 		vs = VetSpot()
-		vs.geom = { "type":"Point", "coordinates":[r['geometry']['location']['lat'], r['geometry']['location']['lng']] }
-		vs.description = str(r['name'])
-		print vs.geom
-		print vs.description
+		vs.name = str(r['name'])
+		vs.latitude = r['geometry']['location']['lat']
+		vs.longitude = r['geometry']['location']['lng']
+		vs.address = r['formatted_address']
+#		vs.phone = r['formatted_phone_number']
+#		vs.opennow = False
+#		if str(r['opening_hours']['open_now']).lower == "true":
+#			vs.opennow = True
 		vslist.append(vs)
-	print vslist
+	print search_result['results']
 
-	return render(request, 'index.html', {'mushroomspot': vslist})
-
+	return render(request, 'poi_list.html', {'pois': vslist})
