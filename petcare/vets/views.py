@@ -46,7 +46,7 @@ def get_client_ip(request):
 
 def searchtomap(request):
 	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
-	search_result = gmaps.places('dogs', location=(19.3937262,72.7894004),types='veterinary_care', radius = 100)
+	search_result = gmaps.places('animal', location=(21.1274792,79.0562344),types='veterinary_care', radius = 100)
 	vslist = []
 	print get_client_ip(request)
 	for r in search_result['results']:
@@ -71,3 +71,6 @@ def searchtomap(request):
 #	print search_result['results']
 
 	return render(request, 'poi_list.html', {'pois': vslist})
+
+def locate_me(request):
+	return render_to_response('geolocate.html', context_instance=RequestContext(request))
