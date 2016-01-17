@@ -29,6 +29,11 @@ def search(request):
 	print output
 	return HttpResponse(output)
 
+def url_extract(request, lat):
+	url = str(lat)
+	return HttpResponse(url)
+
+
 def map(request):
 	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
 	search_result = gmaps.places('dogs', location='London, England',types='veterinary_care',radius=20000)

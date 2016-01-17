@@ -14,18 +14,20 @@ var x = document.getElementById("demo");
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(showPosition);
-        redirect1();
+
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";}
     }
     
 function showPosition(position) {
-    x.innerHTML="Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;	
+    var current = location.href;
+	var next = current + position.coords.latitude + "/" + position.coords.longitude;
+    x.innerHTML = next;
+    redirect_it(next);
 }
 
-function redirect1() {
-    location.replace("http://www.w3schools.com")
+function redirect_it(new_url) {
+    location.replace(new_url);
 }
 
 </script>
