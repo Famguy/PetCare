@@ -6,7 +6,6 @@ from googleplaces import GooglePlaces, types, lang
 import googlemaps
 from vets.models import VetSpot
 
-# Create your views here.
 YOUR_API_KEY = 'AIzaSyAv52Som47-ps4IOblaZsMWOWB0h8p2mfg'
 google_places = GooglePlaces(YOUR_API_KEY)
 
