@@ -55,10 +55,11 @@
                         map: map,
                         title: title
                     });
-/*                    marker.addListener('click', function() {
-                        infowindow.open(map, marker);
+                    marker.addListener('click', function() {
+                        map.setZoom(map.getZoom() + 1);
+                        map.setCenter(marker.getPosition());
                     });
-*/                    marker.addListener('mouseover', function() {
+                    marker.addListener('mouseover', function() {
                         infowindow.open(map, marker);
                     });
                     marker.addListener('mouseout', function() {

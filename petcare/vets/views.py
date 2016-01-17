@@ -5,17 +5,19 @@ from django.http import HttpResponse
 import googlemaps
 from vets.models import VetSpot
 
+gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
+
 def index(request):
 	return render_to_response('search_page.html', context_instance=RequestContext(request))
 
 def search_by_place(request):
+
 	keyw= ""
 	loc = ""
 
 	if request.method == 'POST':
 		loc = request.POST.get('location', '')
 		keyw = request.POST.get('what', '')
-	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
 	geocode_result = gmaps.geocode(loc)
 	lat = float(geocode_result[0]['geometry']['location']['lat'])
 	lon = float(geocode_result[0]['geometry']['location']['lng'])	
@@ -30,7 +32,7 @@ def search_by_place(request):
 
 
 def locate_around_me(request, lat, lon):
-	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
+	
 	lat = float(lat)
 	lon = float(lon)
 	search_result = gmaps.places('animal', location=(lat,lon), types='veterinary_care', radius = 10000)

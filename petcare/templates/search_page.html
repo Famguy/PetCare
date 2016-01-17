@@ -27,6 +27,7 @@
 var x = document.getElementById("demo");
 
 function getLocation() {
+
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(showPosition);
 
@@ -41,7 +42,8 @@ function showPosition(position) {
 }
 
 function redirect_it(new_url) {
-    location.assign(new_url);
+    //location.assign(new_url);
+    location.href =new_url;
 }
 
 </script>
