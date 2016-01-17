@@ -29,7 +29,8 @@ def search_by_place(request):
 	lon = float(geocode_result[0]['geometry']['location']['lng'])	
 	keyw = str(keyw)
 	search_result = gmaps.places( 'animal', location=(lat,lon), types='veterinary_care', radius = 10000)
-	return HttpResponse(str(search_result))
+	out = display_map_with_result(request, search_result)
+	return HttpResponse(out)
 
 
 def locate_around_me(request, lat, lon):
@@ -37,6 +38,11 @@ def locate_around_me(request, lat, lon):
 	lat = float(lat)
 	lon = float(lon)
 	search_result = gmaps.places('animal', location=(lat,lon), types='veterinary_care', radius = 10000)
+	out = display_map_with_result(request, search_result)
+	return HttpResponse(out)
+
+
+def display_map_with_result(request, search_result):
 	vslist = []
 	for r in search_result['results']:
 #		print r['name']
@@ -60,3 +66,4 @@ def locate_around_me(request, lat, lon):
 #	print search_result['results']
 
 	return render(request, 'poi_list.html', {'pois': vslist})
+
