@@ -11,7 +11,6 @@ google_places = GooglePlaces(YOUR_API_KEY)
 
 def index(request):
 	return render_to_response('search_page.html', context_instance=RequestContext(request))
-	#return HttpResponse("Shortly open for search")
 
 def search_by_place(request):
 	keyw= ""
@@ -21,8 +20,6 @@ def search_by_place(request):
 		loc = request.POST.get('location', '')
 		keyw = request.POST.get('what', '')
 	query_result = google_places.nearby_search(location=loc, keyword=keyw, radius=20000, types=[types.TYPE_VETERINARY_CARE])
-	#a working search-
-	#query_result = google_places.nearby_search(location='London, England', keyword='dogs', radius=20000, types=[types.TYPE_VETERINARY_CARE])
 	output = ', '.join([str(place.name) for place in query_result.places])
 	print output
 	return HttpResponse(output)
@@ -33,7 +30,6 @@ def locate_around_me(request, lat, lon):
 	lon = float(lon)
 	search_result = gmaps.places('animal', location=(lat,lon), types='veterinary_care', radius = 10000)
 	vslist = []
-	#print get_client_ip(request)
 	for r in search_result['results']:
 #		print r['name']
 #		print r['geometry']['location']

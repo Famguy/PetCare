@@ -37,12 +37,11 @@ function getLocation() {
 function showPosition(position) {
     var current = location.href;
     var next = current + position.coords.latitude + "/" + position.coords.longitude;
-    x.innerHTML = next;
     redirect_it(next);
 }
 
 function redirect_it(new_url) {
-    location.replace(new_url);
+    location.assign(new_url);
 }
 
 </script>
