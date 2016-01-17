@@ -19,8 +19,12 @@ def search_by_place(request):
 	geocode_result = gmaps.geocode(loc)
 	lat = float(geocode_result[0]['geometry']['location']['lat'])
 	lon = float(geocode_result[0]['geometry']['location']['lng'])	
-	keyw = str(keyw)
-	search_result = gmaps.places( 'animal', location=(lat,lon), types='veterinary_care', radius = 10000)
+
+	if keyw :
+		search_result = gmaps.places( keyw, location=(lat,lon), types='veterinary_care', radius = 10000)
+	else:
+		search_result = gmaps.places( 'animal', location=(lat,lon), types='veterinary_care', radius = 10000)
+
 	out = display_map_with_result(request, search_result)
 	return HttpResponse(out)
 
