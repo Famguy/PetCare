@@ -13,7 +13,7 @@ def index(request):
 	return render_to_response('search_page.html', context_instance=RequestContext(request))
 	#return HttpResponse("Shortly open for search")
 
-def search(request):
+def search_by_place(request):
 	keyw= ""
 	loc = ""
 
@@ -27,13 +27,11 @@ def search(request):
 	print output
 	return HttpResponse(output)
 
-def url_extract(request, lat, lon):
-	url = str(lat) + " " + str(lon)
-	return HttpResponse(url)
-
-def searchtomap(request):
+def locate_around_me(request, lat, lon):
 	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
-	search_result = gmaps.places('animal', location=(21.1274792,79.0562344),types='veterinary_care', radius = 100)
+	lat = float(lat)
+	lon = float(lon)
+	search_result = gmaps.places('animal', location=(lat,lon), types='veterinary_care', radius = 10000)
 	vslist = []
 	#print get_client_ip(request)
 	for r in search_result['results']:
