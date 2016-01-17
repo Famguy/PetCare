@@ -9,8 +9,6 @@ from vets.models import VetSpot
 YOUR_API_KEY = 'AIzaSyAv52Som47-ps4IOblaZsMWOWB0h8p2mfg'
 google_places = GooglePlaces(YOUR_API_KEY)
 
-# You may prefer to use the text_search API, instead (text search vs radar vs nearby).
-
 def index(request):
 	return render_to_response('search_page.html', context_instance=RequestContext(request))
 	#return HttpResponse("Shortly open for search")
@@ -37,7 +35,7 @@ def searchtomap(request):
 	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
 	search_result = gmaps.places('animal', location=(21.1274792,79.0562344),types='veterinary_care', radius = 100)
 	vslist = []
-	print get_client_ip(request)
+	#print get_client_ip(request)
 	for r in search_result['results']:
 #		print r['name']
 #		print r['geometry']['location']
@@ -61,5 +59,3 @@ def searchtomap(request):
 
 	return render(request, 'poi_list.html', {'pois': vslist})
 
-def locate_me(request):
-	return render_to_response('geolocate.html', context_instance=RequestContext(request))
