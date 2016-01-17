@@ -29,8 +29,8 @@ def search(request):
 	print output
 	return HttpResponse(output)
 
-def url_extract(request, lat):
-	url = str(lat)
+def url_extract(request, lat, lon):
+	url = str(lat) + " " + str(lon)
 	return HttpResponse(url)
 
 def get_client_ip(request):
