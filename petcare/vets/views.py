@@ -33,13 +33,6 @@ def url_extract(request, lat):
 	url = str(lat)
 	return HttpResponse(url)
 
-
-def map(request):
-	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
-	search_result = gmaps.places('dogs', location='London, England',types='veterinary_care',radius=20000)
-	print search_result
-	return HttpResponse(search_result)
-
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
