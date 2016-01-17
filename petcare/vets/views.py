@@ -33,14 +33,6 @@ def url_extract(request, lat, lon):
 	url = str(lat) + " " + str(lon)
 	return HttpResponse(url)
 
-def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
-
 def searchtomap(request):
 	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
 	search_result = gmaps.places('animal', location=(21.1274792,79.0562344),types='veterinary_care', radius = 100)
