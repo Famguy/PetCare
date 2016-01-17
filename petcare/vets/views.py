@@ -19,10 +19,18 @@ def search_by_place(request):
 	if request.method == 'POST':
 		loc = request.POST.get('location', '')
 		keyw = request.POST.get('what', '')
-	query_result = google_places.nearby_search(location=loc, keyword=keyw, radius=20000, types=[types.TYPE_VETERINARY_CARE])
+	"""query_result = google_places.nearby_search(location=loc, keyword=keyw, radius=20000, types=[types.TYPE_VETERINARY_CARE])
 	output = ', '.join([str(place.name) for place in query_result.places])
 	print output
-	return HttpResponse(output)
+	return HttpResponse(output)"""
+	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
+	geocode_result = gmaps.geocode(loc)
+	lat = float(geocode_result[0]['geometry']['location']['lat'])
+	lon = float(geocode_result[0]['geometry']['location']['lng'])	
+	keyw = str(keyw)
+	search_result = gmaps.places( 'animal', location=(lat,lon), types='veterinary_care', radius = 10000)
+	return HttpResponse(str(search_result))
+
 
 def locate_around_me(request, lat, lon):
 	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
@@ -52,4 +60,3 @@ def locate_around_me(request, lat, lon):
 #	print search_result['results']
 
 	return render(request, 'poi_list.html', {'pois': vslist})
-
