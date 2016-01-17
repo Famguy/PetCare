@@ -1,6 +1,11 @@
-{% block form %}        
-
-<div>                           
+<!DOCTYPE html>
+<html>
+<body>
+{% block form %}   
+<p>Click the button to use your location.</p>
+<button onclick="getLocation()">Try It!</button>  
+<p id="demo"></p>     
+<div>                             
     <form role="form" action="/vets/find/" method="POST">
 		{% csrf_token %}
             <div>                                     
@@ -18,4 +23,30 @@
 </div>
 {% endblock %}    
 
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(showPosition);
+
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";}
+    }
+    
+function showPosition(position) {
+    var current = location.href;
+    var next = current + position.coords.latitude + "/" + position.coords.longitude;
+    x.innerHTML = next;
+    redirect_it(next);
+}
+
+function redirect_it(new_url) {
+    location.replace(new_url);
+}
+
+</script>
+
+</body>
+</html>
 
