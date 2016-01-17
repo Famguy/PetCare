@@ -2,12 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
-from googleplaces import GooglePlaces, types, lang
 import googlemaps
 from vets.models import VetSpot
-
-YOUR_API_KEY = 'AIzaSyAv52Som47-ps4IOblaZsMWOWB0h8p2mfg'
-google_places = GooglePlaces(YOUR_API_KEY)
 
 def index(request):
 	return render_to_response('search_page.html', context_instance=RequestContext(request))
@@ -19,10 +15,6 @@ def search_by_place(request):
 	if request.method == 'POST':
 		loc = request.POST.get('location', '')
 		keyw = request.POST.get('what', '')
-	"""query_result = google_places.nearby_search(location=loc, keyword=keyw, radius=20000, types=[types.TYPE_VETERINARY_CARE])
-	output = ', '.join([str(place.name) for place in query_result.places])
-	print output
-	return HttpResponse(output)"""
 	gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
 	geocode_result = gmaps.geocode(loc)
 	lat = float(geocode_result[0]['geometry']['location']['lat'])
