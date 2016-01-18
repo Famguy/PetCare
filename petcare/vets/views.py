@@ -68,4 +68,6 @@ def display_map_with_result(request, search_result, place):
 	return render(request, 'poi_list.html', {'pois': vslist, 'place': place})
 
 def details(request, lat, lon):
-	return HttpResponse("More details of a place : We are at " + str(lat) + " latitude")
+	p_id = "ChIJB1edGgHB1DsRBpDcKAJu-yA" #for animal clinic
+	detail_result = gmaps.place(p_id)	
+	return HttpResponse(str(detail_result['result']))
