@@ -24,7 +24,6 @@
             <div class = "entry">
                 <h6>{{ poi.name }}</h6>
                 <p>{{ poi.address }}</p>
-                <p>{{ poi.place_id }}</p>
                 <a href="{% url 'vets:details' p_id=poi.place_id %}">know more</a>
             </div>
         {% endfor %}

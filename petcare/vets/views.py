@@ -47,31 +47,21 @@ def locate_around_me(request, lat, lon):
 def display_map_with_result(request, search_result, place):
 	vslist = []
 	for r in search_result['results']:
-#		print r['name']
-#		print r['geometry']['location']
-#		print r['opening_hours']['open_now']
-#		print r['formatted_address']
-#		print r['formatted_phone_number']
+		
 		vs = VetSpot()
 		vs.name = str(r['name'])
+		vs.address = r['formatted_address']
 		vs.latitude = r['geometry']['location']['lat']
 		vs.longitude = r['geometry']['location']['lng']
-		vs.address = r['formatted_address']
+
 		vs.place_id = r['place_id']
 		if 'opening_hours' in r.keys():
 			if str(r['opening_hours']['open_now']).lower == "true":
 				vs.opennow = True
-#		vs.phone = r['formatted_phone_number']
-#		vs.opennow = False
-#		if str(r['opening_hours']['open_now']).lower == "true":
-#			vs.opennow = True
 		vslist.append(vs)
-#	print search_result['results']
 
 	return render(request, 'poi_list.html', {'pois': vslist, 'place': place})
 
 def details(request, p_id):
-	#p_id = "ChIJB1edGgHB1DsRBpDcKAJu-yA" #for animal clinic
-	p_id = "ChIJbyPQebfB1DsRXmlziIw58yA"
 	detail_result = gmaps.place(p_id)	
 	return HttpResponse(str(detail_result['result']))
