@@ -10,25 +10,28 @@
             padding: 0;
           }
             #map-canvas {
-                height: 75%;
+                height: 70%;
                 margin: 5%;
             }
         </style>
     </head>
 
     <body>
-<!--         <h1>Points of Interest</h1>
 
+        <p> Showing results for {{place}}</p>
+        <div id="map-canvas"></div>
+        {% for poi in pois %}
+            <div class = "entry">
+
+            </div>
+        {% endfor %}
         <dl>
             {% for poi in pois %}
                 <dt>{{ poi.name }}</dt>
                 <dd>{{ poi.latitude }}</dd>
             {% endfor %}
         </dl>
- -->
-        <div id="map-canvas"></div>
 
-<!--        <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script> -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8"></script>
 
         <script>
@@ -48,8 +51,7 @@
                                         '</div>';
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString
-                    });
-                    console.log(contentString);                    
+                    });                   
                     var marker = new google.maps.Marker({
                         position: position,
                         map: map,
