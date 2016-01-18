@@ -24,7 +24,7 @@
             <div class = "entry">
                 <h6>{{ poi.name }}</h6>
                 <p>{{ poi.address }}</p>
-                <a href="{% url 'vets:details' %}">know more</a>
+                <a href="{% url 'vets:details' lat=poi.latitude lon=poi.longitude %}">know more</a>
             </div>
         {% endfor %}
 
