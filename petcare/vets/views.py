@@ -27,6 +27,8 @@ def search_by_place(request):
 	else:
 		search_result = gmaps.places( 'animal', location=(lat,lon), types='veterinary_care', radius = 10000)
 
+	#return HttpResponse(search_result['results'])
+
 	out = display_map_with_result(request, search_result, loc)
 	return HttpResponse(out)
 
@@ -55,6 +57,7 @@ def display_map_with_result(request, search_result, place):
 		vs.latitude = r['geometry']['location']['lat']
 		vs.longitude = r['geometry']['location']['lng']
 		vs.address = r['formatted_address']
+		vs.place_id = r['place_id']
 		if 'opening_hours' in r.keys():
 			if str(r['opening_hours']['open_now']).lower == "true":
 				vs.opennow = True
@@ -67,7 +70,8 @@ def display_map_with_result(request, search_result, place):
 
 	return render(request, 'poi_list.html', {'pois': vslist, 'place': place})
 
-def details(request, lat, lon):
-	p_id = "ChIJB1edGgHB1DsRBpDcKAJu-yA" #for animal clinic
+def details(request, p_id):
+	#p_id = "ChIJB1edGgHB1DsRBpDcKAJu-yA" #for animal clinic
+	p_id = "ChIJbyPQebfB1DsRXmlziIw58yA"
 	detail_result = gmaps.place(p_id)	
 	return HttpResponse(str(detail_result['result']))
