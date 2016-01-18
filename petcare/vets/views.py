@@ -47,17 +47,21 @@ def locate_around_me(request, lat, lon):
 def display_map_with_result(request, search_result, place):
 	vslist = []
 	for r in search_result['results']:
-		
+
 		vs = VetSpot()
 		vs.name = str(r['name'])
 		vs.address = r['formatted_address']
 		vs.latitude = r['geometry']['location']['lat']
 		vs.longitude = r['geometry']['location']['lng']
-
 		vs.place_id = r['place_id']
+
+		if 'rating' in r.keys():
+			vs.rating = r['rating']
+
 		if 'opening_hours' in r.keys():
 			if str(r['opening_hours']['open_now']).lower == "true":
 				vs.opennow = True
+
 		vslist.append(vs)
 
 	return render(request, 'poi_list.html', {'pois': vslist, 'place': place})
