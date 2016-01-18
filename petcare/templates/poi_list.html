@@ -22,15 +22,11 @@
         <div id="map-canvas"></div>
         {% for poi in pois %}
             <div class = "entry">
-
+                <h6>{{ poi.name }}</h6>
+                <p>{{ poi.address }}</p>
+                <a href="{% url 'vets:details' %}">know more</a>
             </div>
         {% endfor %}
-        <dl>
-            {% for poi in pois %}
-                <dt>{{ poi.name }}</dt>
-                <dd>{{ poi.latitude }}</dd>
-            {% endfor %}
-        </dl>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8"></script>
 

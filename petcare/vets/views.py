@@ -67,3 +67,5 @@ def display_map_with_result(request, search_result, place):
 
 	return render(request, 'poi_list.html', {'pois': vslist, 'place': place})
 
+def details(request):
+	return HttpResponse("More details of a place")
