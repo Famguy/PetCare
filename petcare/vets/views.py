@@ -92,4 +92,4 @@ def details(request, p_id):
 	if 'url' in info.keys():
 		display_info['url'] = info['url']
 		
-	return HttpResponse(str(display_info))
+	return render(request, 'place_details.html', {'details': display_info})
