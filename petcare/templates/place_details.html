@@ -19,6 +19,12 @@
     <body>
 
         <div id="map-canvas"></div>
+        {% for key,value in details.items %}
+           
+            <h6>{{ key }}</h6>
+            <p>{{ value }}</p>
+           
+        {% endfor %}
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8"></script>
 
         <script>
