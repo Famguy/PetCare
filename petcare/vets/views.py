@@ -26,9 +26,6 @@ def search_by_place(request):
 		search_result = gmaps.places( keyw, location=(lat,lon), types='veterinary_care', radius = 10000)
 	else:
 		search_result = gmaps.places( 'animal', location=(lat,lon), types='veterinary_care', radius = 10000)
-
-	#return HttpResponse(search_result['results'])
-
 	out = display_map_with_result(request, search_result, loc)
 	return HttpResponse(out)
 
@@ -67,5 +64,32 @@ def display_map_with_result(request, search_result, place):
 	return render(request, 'poi_list.html', {'pois': vslist, 'place': place})
 
 def details(request, p_id):
-	detail_result = gmaps.place(p_id)	
-	return HttpResponse(str(detail_result['result']))
+	detail_result = gmaps.place(p_id)
+	info = detail_result['result']	
+	display_info = {}
+	display_info['Name'] = info['name']
+	display_info['Address'] = info['formatted_address']
+	if 'formatted_phone_number' in info.keys():
+		display_info['Phone'] = info['formatted_phone_number']
+	if 'international_phone_number' in info.keys():
+		display_info['International'] = info['international_phone_number']
+	if 'opening_hours' in info.keys():
+		display_info['Hours'] = info['opening_hours']		
+	if 'permanently_closed' in info.keys():
+		display_info['permanently_closed'] = info['permanently_closed']	
+	if 'photos' in info.keys():
+		display_info['photos'] = info['photos']	
+	if 'price_level' in info.keys():
+		display_info['expense'] = info['price_level']	
+	if 'rating' in info.keys():
+		display_info['rating'] = info['rating']	
+	if 'reviews' in info.keys():
+		display_info['reviews'] = info['reviews']
+	if 'website' in info.keys():
+		display_info['website'] = info['website']
+	if 'vicinity' in info.keys():
+		display_info['vicinity'] = info['vicinity']
+	if 'url' in info.keys():
+		display_info['url'] = info['url']
+		
+	return HttpResponse(str(display_info))
