@@ -1,6 +1,0 @@
-pip install Django==1.8
-pip install django-geojson
-pip install django-leaflet
-pip install django-geojson[field]
-pip install python-google-places
-pip install -U googlemaps
