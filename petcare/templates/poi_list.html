@@ -13,28 +13,60 @@
                 height: 70%;
                 margin: 2% 5%;
             }
+        .content-section-aliter{
+            padding-top:100px;
+        }
+
+        .entry{
+            margin-top: 30px;
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .margin-adjuster{
+            margin: 0px;
+        }
 
     </style>
 {% endblock %}
 
 {% block menu %} 
+    <li>
+        <a class="page-scroll" href="#mapped">Map</a>
+    </li>
+    <li>
+        <a class="page-scroll" href="#results">View Results</a>
+    </li>
 {% endblock %}
 
 {% block content %}  
-        <p> Showing results for {{place}}</p>
-        <div id="map-canvas"></div>
+    <!-- Map Section -->
+    <section id="mapped"  class="container content-section-aliter text-center">
+    <p> Showing results for {{place}}</p>              
+    </section>
+    <div id="map-canvas"></div>
+    <!-- Results Section -->
+    
+    <section id="results"  class="container content-section-aliter">
         {% for poi in pois %}
-            <div class = "entry">
-                <h6>{{ poi.name }}</h6>
-                <p>{{ poi.address }}</p>
+            <div class="entry row">
+                <div>
+                    <h6 class="place-title text-center">{{ poi.name }}</h6>
+                </div>           
+                <address>
+                <p class="margin-adjuster text-left"><strong>Address:  </strong> {{ poi.address }}</p>
+                </address>
                 {% if poi.rating %}
-                    <p>{{ poi.rating }}</p>
+                    <p class="margin-adjuster text-left"><strong>Rating:  </strong> {{ poi.rating }}</p>
                 {% endif %}
-                <a href="{% url 'vets:details' p_id=poi.place_id %}">know more</a>
+
+                <p class="text-right margin-adjuster "><a href="{% url 'vets:details' p_id=poi.place_id %}"><small>know more</small></a></p>
             </div>
-        {% endfor %}
 
-
+        {% endfor %}             
+    </section>
+      
 {% endblock %}         
 
 {% block script %} 
