@@ -1,31 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    
-</head>
-<body>
-{% block form %}   
-<p>Click the button to use your location.</p>
-<button onclick="getLocation()">Try It!</button>  
-<p id="demo"></p>     
-<div>                             
-    <form role="form" action="/vets/find/" method="POST">
-		{% csrf_token %}
-            <div>                                     
-                <div style="vertical-align: middle;width: 75%;float: none;display: inline-block;">
-                    <div>
-                        <input type="text" name="location" placeholder="Which place do you want to search?">
-                        <input type="text" name="what" placeholder="What kind of pet do you have?">
-                        <span>
-                            <button type="submit">Search!</button>
-                        </span>
-                    </div>
-                </div>                  
-            </div>                                    
-    </form>                                                             
-</div>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} Vet Search {% endblock %}
+{% block menu %} 
+{% endblock %}
+{% block content %}   
+    <p>Click the button to use your location.</p>
+    <button onclick="getLocation()">Try It!</button>  
+    <p id="demo"></p>     
+    <div>                             
+        <form role="form" action="/vets/find/" method="POST">
+            {% csrf_token %}
+                <div>                                     
+                    <div style="vertical-align: middle;width: 75%;float: none;display: inline-block;">
+                        <div>
+                            <input type="text" name="location" placeholder="Which place do you want to search?">
+                            <input type="text" name="what" placeholder="What kind of pet do you have?">
+                            <span>
+                                <button type="submit">Search!</button>
+                            </span>
+                        </div>
+                    </div>                  
+                </div>                                    
+        </form>                                                             
+    </div>
 {% endblock %}    
 
+{% block script %} 
 <script>
 var x = document.getElementById("demo");
 
@@ -50,7 +50,6 @@ function redirect_it(new_url) {
 }
 
 </script>
+{% endblock %}
 
-</body>
-</html>
 

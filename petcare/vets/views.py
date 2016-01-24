@@ -7,8 +7,10 @@ from vets.models import VetSpot
 
 gmaps = googlemaps.Client(key='AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8')
 
+
 def index(request):
 	return render_to_response('search_page.html', context_instance=RequestContext(request))
+
 
 def search_by_place(request):
 
