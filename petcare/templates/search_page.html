@@ -1,29 +1,55 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block title %} Vet Search {% endblock %}
-{% block styling %} {% endblock %}
-{% block menu %} 
+{% block styling %} 
+<style>
+    .adjust{
+        margin-top:20px;
+    }
+</style>
 {% endblock %}
-{% block content %}   
-    <p>Click the button to use your location.</p>
-    <button onclick="getLocation()">Try It!</button>  
-    <p id="demo"></p>     
-    <div>                             
-        <form role="form" action="/vets/find/" method="POST">
+{% block menu %} 
+    <li>
+        <a class="page-scroll" href="#search">Search</a>
+    </li>
+{% endblock %}
+{% block content %}  
+    <!-- Search Section -->
+    <section id="search" class="container content-section text-center">
+    <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">    
+                                
+        <form class="form-horizontal" role="form" action="/vets/find/" method="POST">
             {% csrf_token %}
-                <div>                                     
-                    <div style="vertical-align: middle;width: 75%;float: none;display: inline-block;">
-                        <div>
-                            <input type="text" name="location" placeholder="Which place do you want to search?">
-                            <input type="text" name="what" placeholder="What kind of pet do you have?">
-                            <span>
-                                <button type="submit">Search!</button>
-                            </span>
-                        </div>
-                    </div>                  
-                </div>                                    
-        </form>                                                             
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Which place do you want to search? * </label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" name="location" placeholder="eg. England, London"> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Additional details </label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" name="what" placeholder="eg. Type of pet">   
+                    </div>
+                </div>
+                
+                <span>
+                    <button type="submit" class="btn btn-success btn-lg adjust">Search!</button>
+                </span>                                                                                 
+        </form> 
     </div>
+    </div>  
+    <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">  
+        <p><h2>OR</h2></p>
+        <button type="button" class="btn btn-default btn-lg" onclick="getLocation()">Locate nearby vets!</button>  
+        <p id="demo"></p> 
+        
+    </div>
+    </div>                                                             
+    </section>
+
 {% endblock %}    
 
 {% block script %} 
