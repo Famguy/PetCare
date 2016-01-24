@@ -132,7 +132,7 @@ STATIC_URL = '/static/'
 # Static files
 STATICFILES_DIRS =  (
     os.path.join(BASE_DIR, 'static/'),
-    )
+   )
 
 # HTML templates
 
