@@ -2,11 +2,7 @@
 {% load staticfiles %}
 {% block title %} Vet Search {% endblock %}
 {% block styling %} 
-<style>
-    .adjust{
-        margin-top:20px;
-    }
-</style>
+<link href="/static/css/style.css" rel="stylesheet">
 {% endblock %}
 {% block menu %} 
     <li>
@@ -72,7 +68,6 @@ function showPosition(position) {
 }
 
 function redirect_it(new_url) {
-    //location.assign(new_url);
     location.href =new_url;
 }
 

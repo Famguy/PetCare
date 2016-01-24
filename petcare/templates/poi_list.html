@@ -3,32 +3,7 @@
 {% block title %} Points of Interest {% endblock %}
 
 {% block styling %} 
-    <style>
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            }
-        #map-canvas {
-                height: 70%;
-                margin: 2% 5%;
-            }
-        .content-section-aliter{
-            padding-top:100px;
-        }
-
-        .entry{
-            margin-top: 30px;
-            border: 1px solid white;
-            border-radius: 5px;
-            padding: 20px;
-        }
-
-        .margin-adjuster{
-            margin: 0px;
-        }
-
-    </style>
+<link href="/static/css/style.css" rel="stylesheet">
 {% endblock %}
 
 {% block menu %} 
@@ -55,10 +30,10 @@
                     <h6 class="place-title text-center">{{ poi.name }}</h6>
                 </div>           
                 <address>
-                <p class="margin-adjuster text-left"><strong>Address:  </strong> {{ poi.address }}</p>
+                <p class="margin-adjuster text-left"><strong class="colorer">Address :  </strong> {{ poi.address }}</p>
                 </address>
                 {% if poi.rating %}
-                    <p class="margin-adjuster text-left"><strong>Rating:  </strong> {{ poi.rating }}</p>
+                    <p class="margin-adjuster text-left"><strong class="colorer">Rating :  </strong> {{ poi.rating }}</p>
                 {% endif %}
 
                 <p class="text-right margin-adjuster "><a href="{% url 'vets:details' p_id=poi.place_id %}"><small>know more</small></a></p>
