@@ -20,6 +20,10 @@ def search_by_place(request):
 	if request.method == 'POST':
 		loc = request.POST.get('location', '')
 		keyw = request.POST.get('what', '')
+
+	if not loc:
+		return render_to_response('missing_location.html', context_instance=RequestContext(request))
+
 	geocode_result = gmaps.geocode(loc)
 	lat = float(geocode_result[0]['geometry']['location']['lat'])
 	lon = float(geocode_result[0]['geometry']['location']['lng'])	
