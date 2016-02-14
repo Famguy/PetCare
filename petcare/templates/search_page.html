@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label class="col-sm-5 control-label">Which place do you want to search? * </label>
                     <div class="col-sm-7">
-                        <input type="text" class="form-control" name="location" placeholder="eg. England, London"> 
+                        <input type="text" class="form-control" name="location" id="location-input" placeholder="eg. England, London"> 
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,8 +49,11 @@
 {% endblock %}    
 
 {% block script %} 
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 <script>
 var x = document.getElementById("demo");
+var location_input = document.getElementById('location-input');
+var location_autocomplete = new google.maps.places.Autocomplete(location_input);
 
 function getLocation() {
 
