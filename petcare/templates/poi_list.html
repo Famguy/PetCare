@@ -17,8 +17,11 @@
 
 {% block content %}  
     <!-- Map Section -->
-    <section id="mapped"  class="container content-section-aliter text-center">
-    <p> Showing results for {{place}}</p>              
+    <section id="mapped"  class="container content-section-aliter text-center">                   
+        <p> Showing results for {{place}}</p>  
+        <span>
+            <a href="{% url 'vets:index' %}" class="btn btn-default btn-lg">I want to search for some other place . . . .</a>
+        </span>        
     </section>
     <div id="map-canvas"></div>
     <!-- Results Section -->
