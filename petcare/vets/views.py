@@ -25,6 +25,9 @@ def search_by_place(request):
 		return render_to_response('missing_location.html', context_instance=RequestContext(request))
 
 	geocode_result = gmaps.geocode(loc)
+	if not geocode_result:
+		return render_to_response('incorrect_location.html', context_instance=RequestContext(request))
+
 	lat = float(geocode_result[0]['geometry']['location']['lat'])
 	lon = float(geocode_result[0]['geometry']['location']['lng'])	
 
