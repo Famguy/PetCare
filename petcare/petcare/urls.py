@@ -24,8 +24,8 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^vets/', include ('vets.urls', namespace='vets')),
-    #url(r'^$',views.home,name='home'),
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
+    url(r'^$',views.home,name='home'),
+    #url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
 
 
 ]
