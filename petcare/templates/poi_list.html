@@ -57,9 +57,7 @@
 
                     function addMarker(lat, lng, title, info) {
                         var position = new google.maps.LatLng(lat, lng);
-                        var contentString = '<div id="content">'+
-                                            '<div id="siteNotice">'+
-                                            '</div>'+
+                        var contentString = '<div id="content" class="map-window">'+                                         
                                             '<h3 id="firstHeading" class="firstHeading">'+title+'</h3>'+
                                             '<div id="bodyContent">'+
                                             '<p>'+info+'</p>'+

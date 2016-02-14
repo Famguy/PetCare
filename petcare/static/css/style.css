@@ -7,8 +7,16 @@ html, body {
     padding: 0;
 }
 #map-canvas {
-    height: 70%;
+    height: 80%;
     margin: 2% 5%;
+}
+.map-window{
+    color: black;
+    font-family: Arial,sans-serif;
+    text-transform: none;
+    font-size: 10px;
+    padding: 0px;
+    height: auto;
 }
 .content-section-aliter{
     padding-top:100px;
