@@ -75,6 +75,8 @@ def display_map_with_result(request, search_result, place):
 def details(request, p_id):
 	detail_result = gmaps.place(p_id)
 	info = detail_result['result']	
+	lat = info['geometry']['location']['lat']
+	lon = info['geometry']['location']['lng']
 	display_info = {}
 	display_info['Name'] = info['name']
 	display_info['Address'] = info['formatted_address']
@@ -101,4 +103,4 @@ def details(request, p_id):
 	if 'url' in info.keys():
 		display_info['url'] = info['url']
 		
-	return render(request, 'place_details.html', {'details': display_info})
+	return render(request, 'place_details.html', {'details': display_info, 'lat': lat, 'lon': lon})

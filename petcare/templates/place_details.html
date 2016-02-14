@@ -50,7 +50,29 @@
             function initialize() {
                 var map = new google.maps.Map(document.getElementById('map-canvas'));
                 var bounds = new google.maps.LatLngBounds();
-                map.fitBounds(bounds);
+                function addMarker(lat, lng, title, info) {
+                        console.log("here");
+                        var position = new google.maps.LatLng(lat, lng);
+                        var contentString = '<div id="content" class="map-window">'+                                         
+                                            '<h3 id="firstHeading" class="firstHeading">'+title+'</h3>'+
+                                            '<div id="bodyContent">'+
+                                            '<p>'+info+'</p>'+
+                                            '</div>'+
+                                            '</div>';
+                        var infowindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });                   
+                        var marker = new google.maps.Marker({
+                            position: position,
+                            map: map,
+                            title: title
+                        });
+                        marker.addListener('click', function() {
+                            infowindow.open(map, marker);
+                        });
+                        bounds.extend(position);
+                    }
+                addMarker({{ lat }}, {{ lon }}, "{{ details.Name }}","{{ details.Address }}");
             }
 
             var url = window.location.href;
