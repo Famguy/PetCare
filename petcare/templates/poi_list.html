@@ -30,13 +30,13 @@
         {% for poi in pois %}
             <div class="entry row">
                 <div>
-                    <h6 class="place-title text-center">{{ poi.name }}</h6>
+                    <h3 class="place-title text-center">{{ poi.name }}</h3>
                 </div>           
                 <address>
                 <p class="margin-adjuster text-left"><strong class="colorer">Address :  </strong> {{ poi.address }}</p>
                 </address>
                 {% if poi.rating %}
-                    <p class="margin-adjuster text-left"><strong class="colorer">Rating :  </strong> {{ poi.rating }}</p>
+                    <p class="margin-adjuster text-left"><strong class="colorer">Rating :  </strong> {{ poi.rating }}/5</p>
                 {% endif %}
 
                 <p class="text-right margin-adjuster "><a href="{% url 'vets:details' p_id=poi.place_id %}"><small>know more</small></a></p>
