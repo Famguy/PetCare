@@ -103,4 +103,4 @@ def details(request, p_id):
 	if 'url' in info.keys():
 		display_info['url'] = info['url']
 		
-	return render(request, 'place_details.html', {'details': display_info, 'lat': lat, 'lon': lon})
+	return render(request, 'place_details.html', {'details': display_info, 'lat': lat, 'lon': lon, 'pid': p_id})
