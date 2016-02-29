@@ -18,9 +18,6 @@
     <input id="origin-input" class="controls" type="text"
         placeholder="Enter an origin location">
 
-<!--     <input id="destination-input" class="controls" type="text"
-        placeholder="Enter a destination location" value="{{ details.vicinity }}">
- -->
     <div id="mode-selector" class="controls">
       <input type="radio" name="type" id="changemode-walking" checked="checked">
       <label for="changemode-walking">Walking</label>
@@ -44,7 +41,7 @@
 {% endblock %}
 {% block script %} 
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
-<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0tl-yTrvyi_9UESPKQ27Ny4L0ONoktj8"></script>-->   
+   
         <script>
             var url = window.location.href;
             parts = url.split('/');
@@ -65,18 +62,13 @@
               directionsDisplay.setMap(map);
 
               var origin_input = document.getElementById('origin-input');
-              var destination_input = document.getElementById('destination-input');
               var modes = document.getElementById('mode-selector');
 
               map.controls[google.maps.ControlPosition.TOP_LEFT].push(origin_input);
-              map.controls[google.maps.ControlPosition.TOP_LEFT].push(destination_input);
               map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
 
               var origin_autocomplete = new google.maps.places.Autocomplete(origin_input);
               origin_autocomplete.bindTo('bounds', map);
-              var destination_autocomplete =
-                  new google.maps.places.Autocomplete(destination_input);
-              destination_autocomplete.bindTo('bounds', map);
 
                 var bounds = new google.maps.LatLngBounds();
                 function addMarker(lat, lng, title, info) {
@@ -131,19 +123,6 @@
                 expandViewportToFitPlace(map, place);
 
                 origin_place_id = place.place_id;
-                route(origin_place_id, destination_place_id, travel_mode,
-                      directionsService, directionsDisplay);
-              });
-
-              destination_autocomplete.addListener('place_changed', function() {
-                var place = destination_autocomplete.getPlace();
-                if (!place.geometry) {
-                  window.alert("Autocomplete's returned place contains no geometry for destination");
-                  return;
-                }
-                expandViewportToFitPlace(map, place);
-
-                destination_place_id = place.place_id;
                 route(origin_place_id, destination_place_id, travel_mode,
                       directionsService, directionsDisplay);
               });
