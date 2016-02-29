@@ -36,6 +36,17 @@ html, body {
 	color: #42dca3;
 }
 
+p{
+    font-size:18px;
+}
+.item{
+    margin-bottom: 5px;
+}
+
+.item a{
+    color: white;
+}
+
 .controls {
     margin-top: 10px;
     border: 1px solid transparent;

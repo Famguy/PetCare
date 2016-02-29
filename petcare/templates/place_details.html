@@ -30,13 +30,40 @@
     </div>
 
     <div id="map-canvas"></div>
-    <section id="details"  class="container content-section-aliter text-center">
-        {% for key,value in details.items %}
-           
-            <h3>{{ key }}</h3>
-            <p>{{ value }}</p>
-           
-        {% endfor %}
+    <section id="details"  class="container content-section-aliter">
+
+        <h4>{{details.Name}}</h4>
+        <p class = "item"><span class="colorer">Address : </span>{{details.Address}}</p>
+        {% if details.International or details.Phone %}
+        <p class = "item"><span class="colorer">Phone : </span>{{details.Phone}}
+          {% if details.International %}
+          , {{details.International}}
+          {% endif %}
+        </p>
+        {% endif %}
+        
+        {% if details.rating %}
+        <p class = "item"><span class="colorer">Rating : </span>{{details.rating}}</p>
+        {% endif %}
+        {% if permanently_closed %}
+        <p class = "item"><span class="colorer">Permanemtly Closed : </span>{{details.permanently_closed}}</p>
+        {% endif %}
+        {% if details.price_level %}
+        <p class = "item"><span class="colorer">Price Level : </span>{{details.price_level}}</p>
+        {% endif %}
+        {% if details.website %}
+        <p class = "item"><span class="colorer">Website </span><br><a href = "{{details.website}}" target ="_blank">{{details.website}}</a></p>
+        {% endif %}
+        {% if details.url %}
+        <p class = "item"><span class="colorer">Official Google Page </span><br><a href = "{{details.url}}" target ="_blank">{{details.url}}</a></p>
+        {% endif %}
+        <!--{% if details.Hours %}
+        <p class = "item"><span class="colorer">Hours : </span>{{details.Hours}}</p>
+        {% endif %}
+        {% if details.reviews %}
+        <p class = "item"><span class="colorer">Reviews : </span>{{details.reviews}}</p>
+        {% endif %}  -->                 
+
     </section>
 {% endblock %}
 {% block script %} 
