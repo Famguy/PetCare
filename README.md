@@ -27,9 +27,12 @@ Once you have the repository cloned into your system, you can quickly run it wit
 * Get directions to the animal service from any place of your choice (Search includes autocomplete feature)
 
 ## Feedback & contact
-We are happy to receive bug reports, fixes, documentation enhancements, and other improvements. 
+We are happy to receive bug reports, fixes, documentation enhancements, and other improvements.
+
 Master git repository: https://github.com/Famguy/PetCare
-Live application: pet-care.herokuapp.com
+
+Live application: https://pet-care.herokuapp.com/
+
 Please report any bugs [via the github issue tracker](https://github.com/famguy/petcare/issues).
 You can also contact [smarshy](https://github.com/smarshy) or [famguy](https://github.com/famguy) for any issues.
 
