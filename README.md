@@ -21,7 +21,8 @@ Once you have the repository cloned into your system, you can quickly run it wit
     python manage.py runserver
 
 ## What all can you do with it?
-* Search for animal related service at a given address or at your present location
+* Search for animal related service at your present location (If you allow Geolocation)
+* Alternatively search at any given address using autocomplete feature
 * See all the services in a single map and get a list of services
 * For each service, get detailed information (address, contact details, etc.)
 * Get directions to the animal service from any place of your choice (Search includes autocomplete feature)
