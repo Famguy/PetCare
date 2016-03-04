@@ -28,7 +28,8 @@ Once you have the repository cloned into your system, you can quickly run it wit
 
 ## Feedback & contact
 We are happy to receive bug reports, fixes, documentation enhancements, and other improvements. 
-
+Master git repository: https://github.com/Famguy/PetCare
+Live application: pet-care.herokuapp.com
 Please report any bugs [via the github issue tracker](https://github.com/famguy/petcare/issues).
 You can also contact [smarshy](https://github.com/smarshy) or [famguy](https://github.com/famguy) for any issues.
 
