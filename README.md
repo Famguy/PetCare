@@ -20,11 +20,11 @@ You would also have to get a working Google Maps API key. More about it can be f
 ## Running the app:
 Once you have the repository cloned into your system, you can quickly run it with the following commands:
 
-`
-cd working-directory/PetCare/petcare
-python manage.py syncdb
-python manage.py runserver
-`
+
+    cd working-directory/PetCare/petcare
+    python manage.py syncdb
+    python manage.py runserver
+
 
 
 
